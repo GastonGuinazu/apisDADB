@@ -4,7 +4,8 @@ using Pomelo.EntityFrameworkCore.MySql;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = "Server=localhost;user=root;password=gasti123;database=tpi_dabd";
+var connectionString = "Server=localhost;user=root;password=gasti123;database=tpi_dabd"; //Gas
+// var connectionString = "Server=localhost;user=root;password=admin;database=tpi_dabd"; //Noe
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 29));
 
 

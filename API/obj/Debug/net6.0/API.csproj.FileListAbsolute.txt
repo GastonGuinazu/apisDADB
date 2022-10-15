@@ -34,3 +34,39 @@ C:\Users\Klosazz\Desktop\prueba_ dabd1\api\obj\Debug\net6.0\refint\API.dll
 C:\Users\Klosazz\Desktop\prueba_ dabd1\api\obj\Debug\net6.0\API.pdb
 C:\Users\Klosazz\Desktop\prueba_ dabd1\api\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\Klosazz\Desktop\prueba_ dabd1\api\obj\Debug\net6.0\ref\API.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\appsettings.Development.json
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\appsettings.json
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\API.exe
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\API.deps.json
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\API.runtimeconfig.json
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\API.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\API.pdb
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Humanizer.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\MySqlConnector.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.csproj.AssemblyReference.cache
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.AssemblyInfoInputs.cache
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.AssemblyInfo.cs
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.csproj.CoreCompileInputs.cache
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cs
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cache
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\staticwebassets.build.json
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\staticwebassets.development.json
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\scopedcss\bundle\API.styles.css
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.csproj.CopyComplete
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\refint\API.dll
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.pdb
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\API.genruntimeconfig.cache
+c:\Users\gonza\Documents\GitHub\apisDADB\API\obj\Debug\net6.0\ref\API.dll

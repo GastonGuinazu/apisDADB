@@ -51,4 +51,21 @@ public class CartaJugadorController : ControllerBase
         }).ToListAsync();
         return Ok(cartasJugador);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> Delete(int id)
+    {
+         List <CartasJugador> cartas = (from c in _context.CartasJugadors.Where(x =>x.IdUsuario==id)  select c ).ToList();
+         if (cartas.Count == 0)
+            {
+                return NotFound($"No se encontraron cartas para el usuario con el id {id}");
+            }
+          foreach(CartasJugador carta in cartas )
+          {
+              _context.CartasJugadors.Remove(carta);
+              
+          }
+        await _context.SaveChangesAsync();
+       return Ok();
+    }
 }

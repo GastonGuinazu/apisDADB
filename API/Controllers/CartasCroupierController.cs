@@ -1,3 +1,5 @@
+using System.IO.Compression;
+using System.Data.Common;
 using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -55,50 +57,21 @@ public class CartasCroupierController : ControllerBase
     }
 
 
-    // [HttpDelete("{id}")]
-    // public async Task<ActionResult> Delete(int id)
-    // {
-    //     var usuario = await _context.CartasCroupiers.SingleOrDefaultAsync(x => x.IdUsuario == id);
-    //     if(usuario == null)
-    //     {
-    //         return NotFound($"No se encontraron las cartas del usuario {id}");
-    //     }
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> Delete(int id)
+    {
+         List <CartasCroupier> cartas = (from c in _context.CartasCroupiers.Where(x =>x.IdUsuario==id)  select c ).ToList();
+         if (cartas.Count == 0)
+            {
+                return NotFound($"No se encontraron cartas para el usuario con el id {id}");
+            }
+          foreach(CartasCroupier carta in cartas )
+          {
+              _context.CartasCroupiers.Remove(carta);
+              
+          }
+        await _context.SaveChangesAsync();
+       return Ok();
+    }
 
-    //     _context.CartasCroupiers.Remove(usuario);
-    //     await _context.SaveChangesAsync();
-        
-    //     return Ok();
-    // }
-
-    // [HttpDelete("{id}")]
-    // public async Task<ActionResult> Delete(int id)
-    // {
-    //     var user = await _context.CartasCroupiers.Where(x => x.IdUsuario == id);
-    //     if (user == null)
-    //     {
-    //         return NotFound($"No se encontró el User con el id {id}");
-    //     }
-
-    //     _context.CartasCroupiers.Remove(user);
-    //     await _context.SaveChangesAsync();
-
-    //     return Ok();
-    // }
-
-    // [HttpDelete("{idUsuario}")]
-    // public async Task<ActionResult> Delete(int idUsuario)
-    // {
-    //     var cartas = await _context.CartasCroupiers
-    //     .Where(x => x.IdUsuario.Equals(idUsuario))
-    //     .ToListAsync();
-
-    //     if(idUsuario == 0)
-    //     {
-    //         return NotFound($"No se encontró el User con el id {idUsuario}");
-    //     }
-
-    //     _context.CartasCroupiers.Remove(cartas);
-
-    //     return Ok();
-    // }
 }
