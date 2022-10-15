@@ -54,6 +54,28 @@ public class CartasJugadasController : ControllerBase
         return Ok(cartasJugadas);
     }
 
+    [HttpGet("{id}")]
+    public async Task<ActionResult<CartasJugadasModel>> Get(int id)
+    {
+        List<CartasJugada> cartas = (from c in _context.CartasJugadas.Where(x => x.IdUsuario == id) select c).ToList();
+        if (cartas.Count == 0)
+        {
+            return NotFound($"No se encontraron cartas con el id {id}");
+        }
+        foreach (CartasJugada carta in cartas)
+        {
+            var cartasJugadasModel = new CartasJugadasModel
+            {
+                codJugadas = carta.CodJugadas,
+                idCarta = carta.IdCarta,
+                idUsuario = carta.IdUsuario
+            };
+
+        }
+        await _context.SaveChangesAsync();
+        return Ok(cartas);
+    }
+
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(int id)
     {

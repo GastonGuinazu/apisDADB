@@ -39,24 +39,46 @@ public class UsuarioController : ControllerBase
         return Ok(usuarioModel);
     }
 
-    [HttpPost("login")]
-    public async Task<ActionResult<UsuarioModel>> Create(UsuarioModel userModel)
-    {
+    // [HttpPost("login")]
+    // public async Task<ActionResult<UsuarioModel>> Create(UsuarioModel userModel)
+    // {
 
-        var user = _context.Usuarios.FirstOrDefault(x => x.Usuario1 == userModel.usuario && x.Pass == userModel.pass);
-        if (user == null)
+    //     var user = _context.Usuarios.FirstOrDefault(x => x.Usuario1 == userModel.usuario && x.Pass == userModel.pass);
+    //     if (user == null)
+    //     {
+    //         return Unauthorized("Usuario o Contraseña incorrecta");
+    //     }
+    //     UsuarioModel usuarioRetorno = new UsuarioModel();
+    //     usuarioRetorno.usuario = user.Usuario1;
+    //     //usuarioRetorno.idUsuario = user.idUsuario;
+    //     // var usuarioModel = new UsuarioModel
+    //     // {
+    //     //     idUsuario = user.idUsuario,
+    //     //     usuario= user.usuario,
+    //     //     pass = user.pass
+    //     // };
+    //     return Ok(usuarioRetorno);
+    // }
+
+    
+    [HttpPost("login")]
+    public async Task<ActionResult<CartasJugadorModel>> Create(UsuarioModel userModel)
+    {
+        List<Usuario> usuario = (from c in _context.Usuarios.Where(x => x.Usuario1 == userModel.usuario && x.Pass == userModel.pass) select c).ToList();
+        if (usuario == null)
         {
-            return Unauthorized("Usuario o Contraseña incorrecta");
-        }
-        UsuarioModel usuarioRetorno = new UsuarioModel();
-        usuarioRetorno.usuario = user.Usuario1;
-        // var usuarioModel = new UsuarioModel
-        // {
-        //     idUsuario = user.idUsuario,
-        //     usuario= user.usuario,
-        //     pass = user.pass
-        // };
-        return Ok(usuarioRetorno);
+            return NotFound($"Usuario o contraseña incorrecta");
+        }        
+            var cartaJugadorModel = new UsuarioModel
+            {
+                idUsuario = usuario[0].IdUsuario,
+                usuario = usuario[0].Usuario1,
+                pass = null
+            };
+
+        
+        await _context.SaveChangesAsync();
+        return Ok(cartaJugadorModel);
     }
 
 }
