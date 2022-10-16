@@ -65,11 +65,11 @@ public class UsuarioController : ControllerBase
     public async Task<ActionResult<CartasJugadorModel>> Create(UsuarioModel userModel)
     {
         List<Usuario> usuario = (from c in _context.Usuarios.Where(x => x.Usuario1 == userModel.usuario && x.Pass == userModel.pass) select c).ToList();
-        if (usuario == null)
+        if (usuario.Count == 0)
         {
             return NotFound($"Usuario o contraseña incorrecta");
         }        
-            var cartaJugadorModel = new UsuarioModel
+            var usr = new UsuarioModel
             {
                 idUsuario = usuario[0].IdUsuario,
                 usuario = usuario[0].Usuario1,
@@ -78,7 +78,7 @@ public class UsuarioController : ControllerBase
 
         
         await _context.SaveChangesAsync();
-        return Ok(cartaJugadorModel);
+        return Ok(usr);
     }
 
 }
