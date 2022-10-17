@@ -76,9 +76,9 @@ public class CartasCroupierController : ControllerBase
             croupier.Add(carta);
         }
         return Ok (croupier);       
-    }
+    }  
 
-    
+   
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(int id)
@@ -96,5 +96,7 @@ public class CartasCroupierController : ControllerBase
         await _context.SaveChangesAsync();
        return Ok();
     }
+
+    
 
 }

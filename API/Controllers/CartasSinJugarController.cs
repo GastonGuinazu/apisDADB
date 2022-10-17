@@ -52,7 +52,23 @@ public class CartasSinJugarController : ControllerBase
         }).ToListAsync();
         return Ok(cartasSinJugar);
     }
-
+    
+     [HttpDelete("{idUsuario}")]
+    public async Task<ActionResult> Delete(int idUsuario, string idCarta)
+    {
+         List <CartasSinJugar> cartas = (from c in _context.CartasSinJugars.Where(x =>x.IdUsuario==idUsuario && x.IdCarta== idCarta)  select c ).ToList();
+         if (cartas.Count == 0)
+            {
+                return NotFound($"No se encontraron cartas para el usuario con el id {idUsuario}");
+            }
+          foreach(CartasSinJugar carta in cartas )
+          {
+              _context.CartasSinJugars.Remove(carta);
+              
+          }
+        await _context.SaveChangesAsync();
+       return Ok();
+    }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<List<CartaModel>>> Get(int id)
@@ -98,7 +114,7 @@ public class CartasSinJugarController : ControllerBase
     //     return Ok(cartas);
     // }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("BorrarTodo/{id}")]
     public async Task<ActionResult> Delete(int id)
     {
         List<CartasSinJugar> cartas = (from c in _context.CartasSinJugars.Where(x => x.IdUsuario == id) select c).ToList();

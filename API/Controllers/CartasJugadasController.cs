@@ -98,13 +98,30 @@ public class CartasJugadasController : ControllerBase
     //     return Ok(cartas);
     // }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("BorrarTodo/{id}")]
     public async Task<ActionResult> Delete(int id)
     {
          List <CartasJugada> cartas = (from c in _context.CartasJugadas.Where(x =>x.IdUsuario==id)  select c ).ToList();
          if (cartas.Count == 0)
             {
                 return NotFound($"No se encontraron cartas para el usuario con el id {id}");
+            }
+          foreach(CartasJugada carta in cartas )
+          {
+              _context.CartasJugadas.Remove(carta);
+              
+          }
+        await _context.SaveChangesAsync();
+       return Ok();
+    }
+
+    [HttpDelete("{idUsuario}")]
+    public async Task<ActionResult> Delete(int idUsuario, string idCarta)
+    {
+         List <CartasJugada> cartas = (from c in _context.CartasJugadas.Where(x =>x.IdUsuario==idUsuario && x.IdCarta== idCarta)  select c ).ToList();
+         if (cartas.Count == 0)
+            {
+                return NotFound($"No se encontraron cartas para el usuario con el id {idUsuario}");
             }
           foreach(CartasJugada carta in cartas )
           {
