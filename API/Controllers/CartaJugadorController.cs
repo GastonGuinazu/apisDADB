@@ -30,11 +30,34 @@ public class CartaJugadorController : ControllerBase
 
         var cartaJugadorModel = new CartasJugadorModel
         {
-            CodJugador = newCartaJugador.CodJugador,
-            IdCarta = newCartaJugador.IdCarta,
-            IdUsuario = newCartaJugador.IdUsuario
+            //CodJugador = newCartaJugador.CodJugador,
+            idCarta = newCartaJugador.IdCarta,
+            //IdUsuario = newCartaJugador.IdUsuario
         };
         return Ok(cartaJugadorModel);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<List<CartaModel>>> Get(int id)
+    {
+        var sentencia = _context.Cartas.Join(
+            _context.CartasJugadors,
+            cartas => cartas.Id,
+            cartasJugador => cartasJugador.IdCarta,
+            (cartas, cartasJugador) =>
+             new { Carta = cartas, CartasJugador = cartasJugador })
+             .Where(entity => entity.CartasJugador.IdUsuario == id)
+             .Select(entity => entity.Carta).ToList();
+        var cartaJugador = new List<CartaModel>();
+        foreach (var c in sentencia)
+        {
+            var carta = new CartaModel();
+            carta.id = c.Id;
+            carta.carta = c.Carta1;
+            carta.valor = c.Valor;
+            cartaJugador.Add(carta);
+        }
+        return Ok(cartaJugador);
     }
 
 
@@ -52,27 +75,27 @@ public class CartaJugadorController : ControllerBase
     //     return Ok(cartasJugador);
     // }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<CartasJugadorModel>> Get(int id)
-    {
-        List<CartasJugador> cartas = (from c in _context.CartasJugadors.Where(x => x.IdUsuario == id) select c).ToList();
-        if (cartas.Count == 0)
-        {
-            return NotFound($"No se encontraron cartas con el id {id}");
-        }
-        foreach (CartasJugador carta in cartas)
-        {
-            var cartaJugadorModel = new CartasJugadorModel
-            {
-                CodJugador = carta.CodJugador,
-                IdCarta = carta.IdCarta,
-                IdUsuario = carta.IdUsuario
-            };
+    // [HttpGet("{id}")]
+    // public async Task<ActionResult<CartasJugadorModel>> Get(int id)
+    // {
+    //     List<CartasJugador> cartas = (from c in _context.CartasJugadors.Where(x => x.IdUsuario == id) select c).ToList();
+    //     if (cartas.Count == 0)
+    //     {
+    //         return NotFound($"No se encontraron cartas con el id {id}");
+    //     }
+    //     foreach (CartasJugador carta in cartas)
+    //     {
+    //         var cartaJugadorModel = new CartasJugadorModel
+    //         {
+    //             CodJugador = carta.CodJugador,
+    //             idCarta = carta.IdCarta,
+    //             IdUsuario = carta.IdUsuario
+    //         };
 
-        }
-        await _context.SaveChangesAsync();
-        return Ok(cartas);
-    }
+    //     }
+    //     await _context.SaveChangesAsync();
+    //     return Ok(cartas);
+    // }
 
 
     [HttpDelete("{id}")]

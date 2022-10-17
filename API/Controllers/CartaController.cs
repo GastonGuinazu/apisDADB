@@ -16,8 +16,6 @@ public class CartaController : ControllerBase
         _context = context;
     }
 
-
-
     [HttpGet]
     public async Task<ActionResult<Carta>> Get()
     {
@@ -30,6 +28,5 @@ public class CartaController : ControllerBase
         }).ToListAsync();
         return Ok(mazo);
     }
-
     
 }

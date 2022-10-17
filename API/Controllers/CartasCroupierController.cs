@@ -33,9 +33,9 @@ public class CartasCroupierController : ControllerBase
 
         var cartaCroupierModel = new CartasCroupierModel
         {   
-            CodCroupier = newCartaCroupier.CodCroupier,         
+            //CodCroupier = newCartaCroupier.CodCroupier,         
             idCarta = newCartaCroupier.IdCarta,
-            idUsuario = newCartaCroupier.IdUsuario
+            //idUsuario = newCartaCroupier.IdUsuario
 
         };
         return Ok(cartaCroupierModel);
@@ -48,36 +48,37 @@ public class CartasCroupierController : ControllerBase
         var cartasCroupier = await _context.CartasCroupiers.Select(x => 
         new CartasCroupierModel
         {
-            CodCroupier = x.CodCroupier,
+            //CodCroupier = x.CodCroupier,
             idCarta = x.IdCarta,
-            idUsuario = x.IdUsuario
+            //idUsuario = x.IdUsuario
             
         }).ToListAsync();
         return Ok(cartasCroupier);
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<CartasCroupierModel>> Get(int id)
+    public async Task<ActionResult<List<CartaModel>>> Get(int id)
     {
-        List<CartasCroupier> cartas = (from c in _context.CartasCroupiers.Where(x => x.IdUsuario == id) select c).ToList();
-        if (cartas.Count == 0)
-        {
-            return NotFound($"No se encontraron cartas con el id {id}");
+        var sentencia = _context.Cartas.Join(
+            _context.CartasCroupiers,
+            cartas => cartas.Id,
+            cartasCroupier => cartasCroupier.IdCarta,
+            (cartas, cartasCroupier) =>
+             new {Carta = cartas, CartasCroupier = cartasCroupier})
+             .Where(entity => entity.CartasCroupier.IdUsuario == id)
+             .Select(entity => entity.Carta).ToList();
+        var croupier = new List<CartaModel>();
+        foreach(var c in sentencia){
+            var carta = new CartaModel();
+            carta.id = c.Id;
+            carta.carta = c.Carta1;
+            carta.valor = c.Valor; 
+            croupier.Add(carta);
         }
-        foreach (CartasCroupier carta in cartas)
-        {
-            var cartaCroupierModel = new CartasCroupierModel
-            {
-                CodCroupier = carta.CodCroupier,
-                idCarta = carta.IdCarta,
-                idUsuario = carta.IdUsuario
-            };
-
-        }
-        await _context.SaveChangesAsync();
-        return Ok(cartas);
+        return Ok (croupier);       
     }
 
+    
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(int id)

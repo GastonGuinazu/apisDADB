@@ -13,7 +13,7 @@ namespace API.Data
             CartasSinJugars = new HashSet<CartasSinJugar>();
         }
 
-        public string Id { get; set; } = null!;
+        public string? Id { get; set; } = null!;
         public string? Carta1 { get; set; }
         public int? Valor { get; set; }
 

@@ -16,7 +16,7 @@ public class CartasSinJugarController : ControllerBase
         _context = context;
     }
 
-     [HttpPost]
+    [HttpPost]
     public async Task<ActionResult<CartasSinJugarModel>> Create(CartasSinJugarCreateModel carta)
     {
         var newCartasSinJugar = new CartasSinJugar
@@ -29,10 +29,10 @@ public class CartasSinJugarController : ControllerBase
         await _context.SaveChangesAsync();
 
         var cartaSinJugarModel = new CartasSinJugarModel
-        {   
-            CodSinJugar = newCartasSinJugar.CodSinJugar,         
-            IdCarta = newCartasSinJugar.IdCarta,
-            IdUsuario = newCartasSinJugar.IdUsuario
+        {
+            //CodSinJugar = newCartasSinJugar.CodSinJugar,         
+            idCarta = newCartasSinJugar.IdCarta,
+            //IdUsuario = newCartasSinJugar.IdUsuario
 
         };
         return Ok(cartaSinJugarModel);
@@ -42,54 +42,77 @@ public class CartasSinJugarController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<CartasSinJugar>> Get()
     {
-        var cartasSinJugar = await _context.CartasSinJugars.Select(x => 
+        var cartasSinJugar = await _context.CartasSinJugars.Select(x =>
         new CartasSinJugarModel
         {
-            CodSinJugar = x.CodSinJugar,
-            IdCarta = x.IdCarta,
-            IdUsuario = x.IdUsuario
-            
+            //CodSinJugar = x.CodSinJugar,
+            idCarta = x.IdCarta,
+            //IdUsuario = x.IdUsuario
+
         }).ToListAsync();
         return Ok(cartasSinJugar);
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<CartasSinJugar>> Get(int id)
-    {
-        List<CartasSinJugar> cartas = (from c in _context.CartasSinJugars.Where(x => x.IdUsuario == id) select c).ToList();
-        if (cartas.Count == 0)
-        {
-            return NotFound($"No se encontraron cartas con el id {id}");
-        }
-        foreach (CartasSinJugar carta in cartas)
-        {
-            var cartasSinJugarModel = new CartasSinJugarModel
-            {
-                CodSinJugar = carta.CodSinJugar,
-                IdCarta = carta.IdCarta,
-                IdUsuario = carta.IdUsuario
-            };
 
+    [HttpGet("{id}")]
+    public async Task<ActionResult<List<CartaModel>>> Get(int id)
+    {
+        var sentencia = _context.Cartas.Join(
+            _context.CartasSinJugars,
+            cartas => cartas.Id,
+            cartasSinJugar => cartasSinJugar.IdCarta,
+            (cartas, cartasSinJugar) =>
+             new { Carta = cartas, CartasSinJugar = cartasSinJugar })
+             .Where(entity => entity.CartasSinJugar.IdUsuario == id)
+             .Select(entity => entity.Carta).ToList();
+        var cartaSinJugar = new List<CartaModel>();
+        foreach (var c in sentencia)
+        {
+            var carta = new CartaModel();
+            carta.id = c.Id;
+            carta.carta = c.Carta1;
+            carta.valor = c.Valor;
+            cartaSinJugar.Add(carta);
         }
-        await _context.SaveChangesAsync();
-        return Ok(cartas);
+        return Ok(cartaSinJugar);
     }
+    // [HttpGet("{id}")]
+    // public async Task<ActionResult<CartasSinJugar>> Get(int id)
+    // {
+    //     List<CartasSinJugar> cartas = (from c in _context.CartasSinJugars.Where(x => x.IdUsuario == id) select c).ToList();
+    //     if (cartas.Count == 0)
+    //     {
+    //         return NotFound($"No se encontraron cartas con el id {id}");
+    //     }
+    //     foreach (CartasSinJugar carta in cartas)
+    //     {
+    //         var cartasSinJugarModel = new CartasSinJugarModel
+    //         {
+    //             CodSinJugar = carta.CodSinJugar,
+    //             IdCarta = carta.IdCarta,
+    //             IdUsuario = carta.IdUsuario
+    //         };
+
+    //     }
+    //     await _context.SaveChangesAsync();
+    //     return Ok(cartas);
+    // }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> Delete(int id)
     {
-         List <CartasSinJugar> cartas = (from c in _context.CartasSinJugars.Where(x =>x.IdUsuario==id)  select c ).ToList();
-         if (cartas.Count == 0)
-            {
-                return NotFound($"No se encontraron cartas para el usuario con el id {id}");
-            }
-          foreach(CartasSinJugar carta in cartas )
-          {
-              _context.CartasSinJugars.Remove(carta);
-              
-          }
+        List<CartasSinJugar> cartas = (from c in _context.CartasSinJugars.Where(x => x.IdUsuario == id) select c).ToList();
+        if (cartas.Count == 0)
+        {
+            return NotFound($"No se encontraron cartas para el usuario con el id {id}");
+        }
+        foreach (CartasSinJugar carta in cartas)
+        {
+            _context.CartasSinJugars.Remove(carta);
+
+        }
         await _context.SaveChangesAsync();
-       return Ok();
+        return Ok();
     }
 
 }
