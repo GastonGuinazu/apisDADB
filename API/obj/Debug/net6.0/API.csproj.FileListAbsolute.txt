@@ -142,3 +142,39 @@ f:\Repositorios\apisDADB\API\obj\Debug\net6.0\refint\API.dll
 f:\Repositorios\apisDADB\API\obj\Debug\net6.0\API.pdb
 f:\Repositorios\apisDADB\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 f:\Repositorios\apisDADB\API\obj\Debug\net6.0\ref\API.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\appsettings.Development.json
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\appsettings.json
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\API.exe
+f:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\API.deps.json
+f:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\API.runtimeconfig.json
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\API.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\API.pdb
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Humanizer.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\MySqlConnector.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.csproj.AssemblyReference.cache
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.GeneratedMSBuildEditorConfig.editorconfig
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.AssemblyInfoInputs.cache
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.AssemblyInfo.cs
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.csproj.CoreCompileInputs.cache
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cs
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cache
+f:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\staticwebassets.build.json
+f:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\staticwebassets.development.json
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\scopedcss\bundle\API.styles.css
+f:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.csproj.CopyComplete
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\refint\API.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.pdb
+f:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\API.genruntimeconfig.cache
+f:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\obj\Debug\net6.0\ref\API.dll
