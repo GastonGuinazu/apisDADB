@@ -6,6 +6,6 @@ public class UsuarioModel
     public string? usuario { get; set; }
     public string? pass { get; set; }
 
-     public string Token { get; set; }
+     public string? Token { get; set; }
 
 }

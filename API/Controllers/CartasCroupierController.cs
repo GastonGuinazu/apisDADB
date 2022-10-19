@@ -21,7 +21,7 @@ public class CartasCroupierController : ControllerBase
 
     
     [HttpPost]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<CartasCroupierModel>> Create(CartasCroupierCreateModel carta)
     {
         var newCartaCroupier = new CartasCroupier
@@ -45,7 +45,7 @@ public class CartasCroupierController : ControllerBase
 
 
     [HttpGet]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<CartasCroupier>> Get()
     {
         var cartasCroupier = await _context.CartasCroupiers.Select(x => 
@@ -60,7 +60,7 @@ public class CartasCroupierController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<List<CartaModel>>> Get(int id)
     {
         var sentencia = _context.Cartas.Join(
@@ -85,7 +85,7 @@ public class CartasCroupierController : ControllerBase
    
 
     [HttpDelete("{id}")]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult> Delete(int id)
     {
          List <CartasCroupier> cartas = (from c in _context.CartasCroupiers.Where(x =>x.IdUsuario==id)  select c ).ToList();

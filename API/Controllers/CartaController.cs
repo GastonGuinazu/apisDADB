@@ -20,7 +20,7 @@ public class CartaController : ControllerBase
     
     
     [HttpGet]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<Carta>> Get()
     {
         var mazo = await _context.Cartas.Select(x => 

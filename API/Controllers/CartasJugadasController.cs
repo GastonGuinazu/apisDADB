@@ -18,7 +18,7 @@ public class CartasJugadasController : ControllerBase
 
 
     [HttpPost]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<CartasJugadasModel>> Create(CartasJugadasCreateModel carta)
     {
         var newCartaJugada = new CartasJugada
@@ -42,7 +42,7 @@ public class CartasJugadasController : ControllerBase
 
 
     [HttpGet]
-   // [Authorize]
+    [Authorize]
     public async Task<ActionResult<CartasJugada>> Get()
     {
         var cartasJugadas = await _context.CartasJugadas.Select(x => 
@@ -57,7 +57,7 @@ public class CartasJugadasController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<List<CartaModel>>> Get(int id)
     {
         var sentencia = _context.Cartas.Join(
@@ -102,7 +102,7 @@ public class CartasJugadasController : ControllerBase
     // }
 
     [HttpDelete("BorrarTodo/{id}")]
-  //  [Authorize]
+    [Authorize]
     public async Task<ActionResult> Delete(int id)
     {
          List <CartasJugada> cartas = (from c in _context.CartasJugadas.Where(x =>x.IdUsuario==id)  select c ).ToList();
@@ -120,7 +120,7 @@ public class CartasJugadasController : ControllerBase
     }
 
     [HttpDelete("{idUsuario}")]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult> Delete(int idUsuario, string idCarta)
     {
          List <CartasJugada> cartas = (from c in _context.CartasJugadas.Where(x =>x.IdUsuario==idUsuario && x.IdCarta== idCarta)  select c ).ToList();

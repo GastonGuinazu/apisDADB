@@ -44,36 +44,30 @@ public class UsuarioController : ControllerBase
         _context.Usuarios.Add(newUsuario);
         await _context.SaveChangesAsync();
 
-        var usuarioModel = new UsuarioModel
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(new Claim[] {
+                new Claim(ClaimTypes.Name, newUsuario.IdUsuario.ToString()),
+            }),
+            Expires = DateTime.UtcNow.AddDays(7),
+            SigningCredentials = new SigningCredentials
+                (new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        };
+
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+
+        var usr = new UsuarioModel
         {
             idUsuario = newUsuario.IdUsuario,
             usuario = newUsuario.Usuario1,
-            pass = newUsuario.Pass
-
+            Token = tokenHandler.WriteToken(token)
         };
-        return Ok(usuarioModel);
+
+        return Ok(usr);
     }
-
-    // [HttpPost("login")]
-    // public async Task<ActionResult<UsuarioModel>> Create(UsuarioModel userModel)
-    // {
-
-    //     var user = _context.Usuarios.FirstOrDefault(x => x.Usuario1 == userModel.usuario && x.Pass == userModel.pass);
-    //     if (user == null)
-    //     {
-    //         return Unauthorized("Usuario o Contraseña incorrecta");
-    //     }
-    //     UsuarioModel usuarioRetorno = new UsuarioModel();
-    //     usuarioRetorno.usuario = user.Usuario1;
-    //     //usuarioRetorno.idUsuario = user.idUsuario;
-    //     // var usuarioModel = new UsuarioModel
-    //     // {
-    //     //     idUsuario = user.idUsuario,
-    //     //     usuario= user.usuario,
-    //     //     pass = user.pass
-    //     // };
-    //     return Ok(usuarioRetorno);
-    // }
 
 
     [AllowAnonymous]
@@ -84,7 +78,7 @@ public class UsuarioController : ControllerBase
 
         if (user == null)
         {
-            return NotFound($"Usuario o contraseña incorrecta");
+            return Unauthorized($"Usuario o contraseña incorrecta");
         }
 
         //si el usuario existe, se genera token
