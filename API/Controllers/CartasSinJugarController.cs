@@ -3,6 +3,7 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
 
@@ -17,6 +18,7 @@ public class CartasSinJugarController : ControllerBase
     }
 
     [HttpPost]
+    //[Authorize]
     public async Task<ActionResult<CartasSinJugarModel>> Create(CartasSinJugarCreateModel carta)
     {
         var newCartasSinJugar = new CartasSinJugar
@@ -40,6 +42,7 @@ public class CartasSinJugarController : ControllerBase
 
 
     [HttpGet]
+    //[Authorize]
     public async Task<ActionResult<CartasSinJugar>> Get()
     {
         var cartasSinJugar = await _context.CartasSinJugars.Select(x =>
@@ -54,6 +57,7 @@ public class CartasSinJugarController : ControllerBase
     }
     
      [HttpDelete("{idUsuario}")]
+    // [Authorize]
     public async Task<ActionResult> Delete(int idUsuario, string idCarta)
     {
          List <CartasSinJugar> cartas = (from c in _context.CartasSinJugars.Where(x =>x.IdUsuario==idUsuario && x.IdCarta== idCarta)  select c ).ToList();
@@ -71,6 +75,7 @@ public class CartasSinJugarController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    //[Authorize]
     public async Task<ActionResult<List<CartaModel>>> Get(int id)
     {
         var sentencia = _context.Cartas.Join(
@@ -115,6 +120,7 @@ public class CartasSinJugarController : ControllerBase
     // }
 
     [HttpDelete("BorrarTodo/{id}")]
+    //[Authorize]
     public async Task<ActionResult> Delete(int id)
     {
         List<CartasSinJugar> cartas = (from c in _context.CartasSinJugars.Where(x => x.IdUsuario == id) select c).ToList();

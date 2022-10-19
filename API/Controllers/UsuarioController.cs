@@ -1,8 +1,21 @@
-using API.Data;
-using API.Models;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+
+
+
 using Pomelo.EntityFrameworkCore.MySql;
+
+
+using API.Data;
+using API.Models;
 
 namespace API.Controllers;
 
@@ -11,12 +24,14 @@ namespace API.Controllers;
 public class UsuarioController : ControllerBase
 {
     private readonly tpi_dabdContext _context;
-    public UsuarioController(tpi_dabdContext context)
+    private readonly AppSettings _appSettings;
+    public UsuarioController(tpi_dabdContext context,  IOptions<AppSettings> appSettings)
     {
         _context = context;
+        _appSettings = appSettings.Value;
     }
 
-
+    [AllowAnonymous]
     [HttpPost]
     public async Task<ActionResult<UsuarioModel>> Create(UsuarioCreateModel user)
     {
@@ -60,23 +75,41 @@ public class UsuarioController : ControllerBase
     //     return Ok(usuarioRetorno);
     // }
 
-    
+
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<ActionResult<CartasJugadorModel>> Create(UsuarioModel userModel)
     {
-        List<Usuario> usuario = (from c in _context.Usuarios.Where(x => x.Usuario1 == userModel.usuario && x.Pass == userModel.pass) select c).ToList();
-        if (usuario.Count == 0)
+        var user = _context.Usuarios.SingleOrDefault(x => x.Usuario1 == userModel.usuario && x.Pass == userModel.pass);
+
+        if (user == null)
         {
             return NotFound($"Usuario o contraseña incorrecta");
-        }        
-            var usr = new UsuarioModel
-            {
-                idUsuario = usuario[0].IdUsuario,
-                usuario = usuario[0].Usuario1,
-                pass = null
-            };
+        }
 
-        
+        //si el usuario existe, se genera token
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(new Claim[] {
+                new Claim(ClaimTypes.Name, user.IdUsuario.ToString()),
+            }),
+            Expires = DateTime.UtcNow.AddDays(7),
+            SigningCredentials = new SigningCredentials
+                (new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        };
+
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+
+        var usr = new UsuarioModel
+        {
+            idUsuario = user.IdUsuario,
+            usuario = user.Usuario1,
+            Token = tokenHandler.WriteToken(token)
+        };
+
+
         await _context.SaveChangesAsync();
         return Ok(usr);
     }

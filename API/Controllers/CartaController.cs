@@ -1,8 +1,10 @@
-using API.Data;
-using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.AspNetCore.Authorization;
+
+using API.Data;
+using API.Models;
 
 namespace API.Controllers;
 
@@ -15,8 +17,10 @@ public class CartaController : ControllerBase
     {
         _context = context;
     }
-
+    
+    
     [HttpGet]
+    //[Authorize]
     public async Task<ActionResult<Carta>> Get()
     {
         var mazo = await _context.Cartas.Select(x => 

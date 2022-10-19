@@ -1,8 +1,10 @@
-using API.Data;
-using API.Models;
+using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql;
+using API.Data;
+using API.Models;
+
 
 namespace API.Controllers;
 
@@ -17,6 +19,7 @@ public class CartaJugadorController : ControllerBase
     }
 
     [HttpPost]
+    //[Authorize]
     public async Task<ActionResult<CartasJugadorModel>> Create(CartasJugadorCreateModel carta)
     {
         var newCartaJugador = new CartasJugador
@@ -38,6 +41,7 @@ public class CartaJugadorController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    //[Authorize]
     public async Task<ActionResult<List<CartaModel>>> Get(int id)
     {
         var sentencia = _context.Cartas.Join(
@@ -99,6 +103,7 @@ public class CartaJugadorController : ControllerBase
 
 
     [HttpDelete("{id}")]
+    //[Authorize]
     public async Task<ActionResult> Delete(int id)
     {
         List<CartasJugador> cartas = (from c in _context.CartasJugadors.Where(x => x.IdUsuario == id) select c).ToList();
