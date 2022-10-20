@@ -185,3 +185,10 @@ c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.Identity
 c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 c:\Users\gonza\Documents\GitHub\apisDADB\API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

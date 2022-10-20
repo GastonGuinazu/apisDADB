@@ -1,3 +1,7 @@
+CREATE DATABASE tpi_dabd;
+
+USE tpi_dabd;
+
 CREATE TABLE cartas (
 id varchar (5) PRIMARY KEY,
 carta varchar (25),
@@ -23,7 +27,6 @@ idUsuario int auto_increment primary key,
 usuario varchar(50),
 pass varchar(50)
 );
-
 
 CREATE TABLE sesiones (
 idSesion int auto_increment primary key,
@@ -58,7 +61,6 @@ idCarta varchar (5),
 idUsuario int,
 FOREIGN KEY (idUsuario) REFERENCES usuarios (idUsuario),
 FOREIGN KEY (idCarta) REFERENCES cartas (id));
-
 
 INSERT INTO usuarios (usuario,pass) VALUES 
 ("noe","123"),("nacho","123"),("gaston","123");
