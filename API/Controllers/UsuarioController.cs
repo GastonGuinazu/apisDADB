@@ -31,14 +31,19 @@ public class UsuarioController : ControllerBase
         _appSettings = appSettings.Value;
     }
 
-    [AllowAnonymous]
+   // [AllowAnonymous]
     [HttpPost]
     public async Task<ActionResult<UsuarioModel>> Create(UsuarioCreateModel user)
     {
         var newUsuario = new Usuario
         {
             Usuario1 = user.usuario,
-            Pass = user.pass
+            Pass = user.pass,
+            GanadasJugador = 0,
+            GanadasCroupier=0,
+            BlackJackJugador=0,
+            BlackJackCroupier=0
+            
 
         };
         _context.Usuarios.Add(newUsuario);

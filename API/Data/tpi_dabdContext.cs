@@ -21,6 +21,7 @@ namespace API.Data
         public virtual DbSet<CartasJugada> CartasJugadas { get; set; } = null!;
         public virtual DbSet<CartasJugador> CartasJugadors { get; set; } = null!;
         public virtual DbSet<CartasSinJugar> CartasSinJugars { get; set; } = null!;
+        public virtual DbSet<Reportesesion> Reportesesions { get; set; } = null!;
         public virtual DbSet<Sesione> Sesiones { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
 
@@ -29,7 +30,7 @@ namespace API.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("server=localhost;user=root;database=tpi_dabd;password=gasti123", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"));
+                optionsBuilder.UseMySql("server=localhost;database=tpi_dabd;uid=root;pwd=gasti123", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.30-mysql"));
             }
         }
 
@@ -173,6 +174,17 @@ namespace API.Data
                     .HasConstraintName("cartas_sin_jugar_ibfk_1");
             });
 
+            modelBuilder.Entity<Reportesesion>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("reportesesion");
+
+                entity.Property(e => e.Usuario)
+                    .HasMaxLength(50)
+                    .HasColumnName("usuario");
+            });
+
             modelBuilder.Entity<Sesione>(entity =>
             {
                 entity.HasKey(e => e.IdSesion)
@@ -200,6 +212,14 @@ namespace API.Data
                 entity.ToTable("usuarios");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+
+                entity.Property(e => e.BlackJackCroupier).HasColumnName("blackJackCroupier");
+
+                entity.Property(e => e.BlackJackJugador).HasColumnName("blackJackJugador");
+
+                entity.Property(e => e.GanadasCroupier).HasColumnName("ganadasCroupier");
+
+                entity.Property(e => e.GanadasJugador).HasColumnName("ganadasJugador");
 
                 entity.Property(e => e.Pass)
                     .HasMaxLength(50)

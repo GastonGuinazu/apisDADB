@@ -17,6 +17,10 @@ namespace API.Data
         public int IdUsuario { get; set; }
         public string? Usuario1 { get; set; }
         public string? Pass { get; set; }
+        public int? GanadasJugador { get; set; }
+        public int? GanadasCroupier { get; set; }
+        public int? BlackJackJugador { get; set; }
+        public int? BlackJackCroupier { get; set; }
 
         public virtual ICollection<CartasCroupier> CartasCroupiers { get; set; }
         public virtual ICollection<CartasJugada> CartasJugada { get; set; }
