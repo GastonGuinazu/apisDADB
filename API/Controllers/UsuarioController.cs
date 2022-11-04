@@ -28,13 +28,13 @@ public class UsuarioController : ControllerBase
 {
     private readonly tpi_dabdContext _context;
     private readonly AppSettings _appSettings;
-    public UsuarioController(tpi_dabdContext context,  IOptions<AppSettings> appSettings)
+    public UsuarioController(tpi_dabdContext context, IOptions<AppSettings> appSettings)
     {
         _context = context;
         _appSettings = appSettings.Value;
     }
 
-   // [AllowAnonymous]
+    // [AllowAnonymous]
     [HttpPost]
     public async Task<ActionResult<UsuarioModel>> Create(UsuarioCreateModel user)
     {
@@ -43,10 +43,10 @@ public class UsuarioController : ControllerBase
             Usuario1 = user.usuario,
             Pass = user.pass,
             GanadasJugador = 0,
-            GanadasCroupier=0,
-            BlackJackJugador=0,
-            BlackJackCroupier=0
-            
+            GanadasCroupier = 0,
+            BlackJackJugador = 0,
+            BlackJackCroupier = 0
+
 
         };
         _context.Usuarios.Add(newUsuario);
@@ -118,7 +118,7 @@ public class UsuarioController : ControllerBase
 
         };
         _context.Sesiones.Add(newSesion);
-      
+
 
 
         await _context.SaveChangesAsync();
@@ -136,9 +136,57 @@ public class UsuarioController : ControllerBase
         }
         else
         {
-            jugadorGanada.GanadasJugador = jugadorGanada.GanadasJugador+1;
+            jugadorGanada.GanadasJugador = jugadorGanada.GanadasJugador + 1;
             await _context.SaveChangesAsync();
             return Ok();
+        }
+    }
+
+    [HttpGet("GanadasJugador")]
+    public async Task<ActionResult<UsuarioModel>> ganadasPorJugador(int id)
+    {
+        var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
+
+        if (usuario == null)
+        {
+            return NotFound("No se encontro el usuario");
+        }
+        else
+        {
+            var usr = new UsuarioReporteDosModel
+            {
+                idUsuario = usuario.IdUsuario,
+                ganadasJugador = usuario.GanadasJugador,
+                ganadasCroupier = usuario.GanadasCroupier
+
+            };
+
+            await _context.SaveChangesAsync();
+            return Ok(usr);
+        }
+    }
+
+    [HttpGet("GanadasBlackjack")]
+    public async Task<ActionResult<UsuarioModel>> ganadasPorBlackjack(int id)
+    {
+        var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
+
+        if (usuario == null)
+        {
+            return NotFound("No se encontro el usuario");
+        }
+        else
+        {
+            var usr = new UsuarioReporteTresModel
+            {
+                idUsuario = usuario.IdUsuario,
+                blackJackJugador = usuario.BlackJackJugador,
+                blackJackCroupier = usuario.BlackJackCroupier
+
+            };
+
+            await _context.SaveChangesAsync();
+            return Ok(usr);
         }
     }
 
@@ -153,13 +201,13 @@ public class UsuarioController : ControllerBase
         }
         else
         {
-            croupierGanada.GanadasCroupier = croupierGanada.GanadasCroupier+1;
+            croupierGanada.GanadasCroupier = croupierGanada.GanadasCroupier + 1;
             await _context.SaveChangesAsync();
             return Ok();
         }
     }
 
-    
+
     [HttpPut("PutJugadorBlackjack{id}")]
     public async Task<ActionResult<UsuarioModel>> blackJackJugador(int id)
     {
@@ -171,7 +219,7 @@ public class UsuarioController : ControllerBase
         }
         else
         {
-            jugadorBlackJack.BlackJackJugador = jugadorBlackJack.BlackJackJugador+1;
+            jugadorBlackJack.BlackJackJugador = jugadorBlackJack.BlackJackJugador + 1;
             await _context.SaveChangesAsync();
             return Ok();
         }
@@ -188,7 +236,7 @@ public class UsuarioController : ControllerBase
         }
         else
         {
-            croupierBlackJack.BlackJackCroupier = croupierBlackJack.BlackJackCroupier+1;
+            croupierBlackJack.BlackJackCroupier = croupierBlackJack.BlackJackCroupier + 1;
             await _context.SaveChangesAsync();
             return Ok();
         }
