@@ -111,6 +111,15 @@ public class UsuarioController : ControllerBase
             Token = tokenHandler.WriteToken(token)
         };
 
+        var newSesion = new Sesione
+        {
+
+            IdUsuario = usr.idUsuario
+
+        };
+        _context.Sesiones.Add(newSesion);
+      
+
 
         await _context.SaveChangesAsync();
         return Ok(usr);
