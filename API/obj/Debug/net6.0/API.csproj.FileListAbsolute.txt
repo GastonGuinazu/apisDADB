@@ -192,3 +192,10 @@ F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0
 F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 F:\Facu\Tecnicatura Programacion\2022\DABD\TPI\API\apisDADB\API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+f:\Repositorios\apisDADB\API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+f:\Repositorios\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+f:\Repositorios\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+f:\Repositorios\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+f:\Repositorios\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+f:\Repositorios\apisDADB\API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+f:\Repositorios\apisDADB\API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

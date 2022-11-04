@@ -1,3 +1,6 @@
+using System.Xml.XPath;
+using System.Xml.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -113,5 +116,73 @@ public class UsuarioController : ControllerBase
         return Ok(usr);
     }
 
-//asdasdasdasd
+    [HttpPut("PutGanadasJugador{id}")]
+    public async Task<ActionResult<UsuarioModel>> ganadasJugador(int id)
+    {
+        var jugadorGanada = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
+
+        if (jugadorGanada == null)
+        {
+            return NotFound("No se encontro el usuario");
+        }
+        else
+        {
+            jugadorGanada.GanadasJugador = jugadorGanada.GanadasJugador+1;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+    }
+
+    [HttpPut("PutGanadasCroupier{id}")]
+    public async Task<ActionResult<UsuarioModel>> ganadasCroupier(int id)
+    {
+        var croupierGanada = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
+
+        if (croupierGanada == null)
+        {
+            return NotFound("No se encontro el usuario");
+        }
+        else
+        {
+            croupierGanada.GanadasCroupier = croupierGanada.GanadasCroupier+1;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+    }
+
+    
+    [HttpPut("PutJugadorBlackjack{id}")]
+    public async Task<ActionResult<UsuarioModel>> blackJackJugador(int id)
+    {
+        var jugadorBlackJack = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
+
+        if (jugadorBlackJack == null)
+        {
+            return NotFound("No se encontro el usuario");
+        }
+        else
+        {
+            jugadorBlackJack.BlackJackJugador = jugadorBlackJack.BlackJackJugador+1;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+    }
+
+    [HttpPut("PutCroupierBlackjack{id}")]
+    public async Task<ActionResult<UsuarioModel>> blackJackCroupier(int id)
+    {
+        var croupierBlackJack = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
+
+        if (croupierBlackJack == null)
+        {
+            return NotFound("No se encontro el usuario");
+        }
+        else
+        {
+            croupierBlackJack.BlackJackCroupier = croupierBlackJack.BlackJackCroupier+1;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+    }
+
 }
