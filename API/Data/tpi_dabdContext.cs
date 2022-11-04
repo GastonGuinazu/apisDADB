@@ -21,6 +21,8 @@ namespace API.Data
         public virtual DbSet<CartasJugada> CartasJugadas { get; set; } = null!;
         public virtual DbSet<CartasJugador> CartasJugadors { get; set; } = null!;
         public virtual DbSet<CartasSinJugar> CartasSinJugars { get; set; } = null!;
+        public virtual DbSet<Reporteganadasperdida> Reporteganadasperdidas { get; set; } = null!;
+        public virtual DbSet<Reporteranking> Reporterankings { get; set; } = null!;
         public virtual DbSet<Reportesesion> Reportesesions { get; set; } = null!;
         public virtual DbSet<Sesione> Sesiones { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
@@ -172,6 +174,28 @@ namespace API.Data
                     .WithMany(p => p.CartasSinJugars)
                     .HasForeignKey(d => d.IdUsuario)
                     .HasConstraintName("cartas_sin_jugar_ibfk_1");
+            });
+
+            modelBuilder.Entity<Reporteganadasperdida>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("reporteganadasperdidas");
+
+                entity.Property(e => e.TotalGanadas).HasColumnName("totalGanadas");
+
+                entity.Property(e => e.TotalPerdidas).HasColumnName("totalPerdidas");
+            });
+
+            modelBuilder.Entity<Reporteranking>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("reporteranking");
+
+                entity.Property(e => e.Usuario)
+                    .HasMaxLength(50)
+                    .HasColumnName("usuario");
             });
 
             modelBuilder.Entity<Reportesesion>(entity =>

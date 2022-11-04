@@ -126,6 +126,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPut("PutGanadasJugador{id}")]
+    [Authorize]
     public async Task<ActionResult<UsuarioModel>> ganadasJugador(int id)
     {
         var jugadorGanada = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
@@ -143,6 +144,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpGet("GanadasJugador")]
+    [Authorize]
     public async Task<ActionResult<UsuarioModel>> ganadasPorJugador(int id)
     {
         var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
@@ -167,6 +169,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpGet("GanadasBlackjack")]
+    [Authorize]
     public async Task<ActionResult<UsuarioModel>> ganadasPorBlackjack(int id)
     {
         var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
@@ -190,7 +193,36 @@ public class UsuarioController : ControllerBase
         }
     }
 
+    [HttpGet("TotalGanadasPerdidas")]
+    [Authorize]
+    public async Task<ActionResult<Reporteganadasperdida>> ganadasPerdidasTotal()
+    {
+        var vistaReporte = await _context.Reporteganadasperdidas.Select(x =>
+        new ReporteGanadasPerdidasModel
+        {
+            totalGanadas = x.TotalGanadas,
+            totalPerdidas = x.TotalPerdidas
+
+        }).ToListAsync();
+        return Ok(vistaReporte);
+    }
+
+    [HttpGet("RankingGanadas")]
+    [Authorize]
+    public async Task<ActionResult<Reporteranking>> rankingGanadas()
+    {
+        var vistaReporte = await _context.Reporterankings.Select(x =>
+        new ReporterankingModel
+        {
+            usuario = x.Usuario,
+            ganadas = x.Ganadas
+
+        }).ToListAsync();
+        return Ok(vistaReporte);
+    }
+
     [HttpPut("PutGanadasCroupier{id}")]
+    [Authorize]
     public async Task<ActionResult<UsuarioModel>> ganadasCroupier(int id)
     {
         var croupierGanada = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
@@ -209,6 +241,7 @@ public class UsuarioController : ControllerBase
 
 
     [HttpPut("PutJugadorBlackjack{id}")]
+    [Authorize]
     public async Task<ActionResult<UsuarioModel>> blackJackJugador(int id)
     {
         var jugadorBlackJack = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);
@@ -226,6 +259,7 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPut("PutCroupierBlackjack{id}")]
+    [Authorize]
     public async Task<ActionResult<UsuarioModel>> blackJackCroupier(int id)
     {
         var croupierBlackJack = await _context.Usuarios.FirstOrDefaultAsync(x => x.IdUsuario == id);

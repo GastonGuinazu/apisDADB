@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace API.Data
 {
-    public partial class Reportesesion
+    public partial class Reporteranking
     {
         public string? Usuario { get; set; }
-        public int Cantidad { get; set; }
+        public int? Ganadas { get; set; }
     }
 }

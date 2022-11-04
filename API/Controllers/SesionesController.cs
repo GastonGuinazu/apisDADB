@@ -42,7 +42,7 @@ public class SesionesController : ControllerBase
     // }
 
     [HttpGet("CantSesiones")]
-    //[Authorize]
+    [Authorize]
     public async Task<ActionResult<Reportesesion>> ObtenerVistaReporte()
     {
         var vistaReporte = await _context.Reportesesions.Select(x =>
