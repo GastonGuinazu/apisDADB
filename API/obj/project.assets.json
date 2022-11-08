@@ -1280,19 +1280,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Klosazz\\.nuget\\packages\\": {}
+    "C:\\Users\\Nacho\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Repositorios\\apisDADB\\API\\API.csproj",
+      "projectUniqueName": "f:\\Facu\\Tecnicatura Programacion\\2022\\DABD\\TPI\\API\\apisDADB\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "F:\\Repositorios\\apisDADB\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\Klosazz\\.nuget\\packages\\",
-      "outputPath": "F:\\Repositorios\\apisDADB\\API\\obj\\",
+      "projectPath": "f:\\Facu\\Tecnicatura Programacion\\2022\\DABD\\TPI\\API\\apisDADB\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Nacho\\.nuget\\packages\\",
+      "outputPath": "f:\\Facu\\Tecnicatura Programacion\\2022\\DABD\\TPI\\API\\apisDADB\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Klosazz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Nacho\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1355,7 +1355,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

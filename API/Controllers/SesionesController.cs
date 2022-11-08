@@ -17,30 +17,7 @@ public class SesionesController : ControllerBase
     {
         _context = context;
     }
-
- //   [HttpPost("CrearSesion")]
-  //  [Authorize]
-    // public async Task<ActionResult<SesionModel>> CrearSesion(SesionesCreateModel sesion)
-    // {
-    //     var newSesion = new Sesione
-    //     {
-
-    //         IdUsuario = sesion.idUsuario
-
-    //     };
-    //     _context.Sesiones.Add(newSesion);
-    //     await _context.SaveChangesAsync();
-
-    //     var sesionModel = new SesionModel
-    //     {
-
-    //         idSesion = newSesion.IdSesion,
-    //         idUsuario = newSesion.IdUsuario
-
-    //     };
-    //     return Ok(sesionModel);
-    // }
-
+ 
     [HttpGet("CantSesiones")]
     [Authorize]
     public async Task<ActionResult<Reportesesion>> ObtenerVistaReporte()
