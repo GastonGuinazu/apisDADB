@@ -34,7 +34,7 @@ public class UsuarioController : ControllerBase
         _appSettings = appSettings.Value;
     }
 
-    // [AllowAnonymous]
+    [AllowAnonymous]
     [HttpPost]
     public async Task<ActionResult<UsuarioModel>> Create(UsuarioCreateModel user)
     {
