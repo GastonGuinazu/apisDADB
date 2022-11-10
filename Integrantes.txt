@@ -1,0 +1,17 @@
+Integrantes:
+112957 - González Tulián, Noelia
+113197 - Guiñazú, Gastón
+113114 - Rivera, Ignacio
+
+Repositorio Front-end:
+https://github.com/IgnacioRivera99/TPI_DABD.git
+Branch Entrega-3
+
+Repositorio Back-end:
+https://github.com/GastonGuinazu/apisDADB.git
+Branch Entrega-3
+En este repositorio se encuentra el script de la base de datos de MySQL.
+
+La librería y el plugin que se utiliza para los reportes es:
+npm install chart.js --save
+npm install chartjs-plugin-datalabels --save

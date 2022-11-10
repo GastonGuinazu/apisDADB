@@ -64,3 +64,31 @@ FOREIGN KEY (idCarta) REFERENCES cartas (id));
 
 INSERT INTO usuarios (usuario,pass) VALUES 
 ("noe","123"),("nacho","123"),("gaston","123");
+
+CREATE VIEW `tpi_dabd`.`reporteganadasperdidas` AS
+    SELECT 
+        SUM(`tpi_dabd`.`usuarios`.`ganadasJugador`) AS `totalGanadas`,
+        SUM(`tpi_dabd`.`usuarios`.`ganadasCroupier`) AS `totalPerdidas`
+    FROM
+        `tpi_dabd`.`usuarios`;
+
+CREATE VIEW `tpi_dabd`.`reporteranking` AS
+    SELECT 
+        `tpi_dabd`.`usuarios`.`usuario` AS `usuario`,
+        `tpi_dabd`.`usuarios`.`ganadasJugador` AS `Ganadas`
+    FROM
+        `tpi_dabd`.`usuarios`
+    WHERE
+        (`tpi_dabd`.`usuarios`.`ganadasJugador` > 0)
+    GROUP BY `tpi_dabd`.`usuarios`.`usuario`
+    ORDER BY `tpi_dabd`.`usuarios`.`ganadasJugador` DESC
+
+
+	CREATE VIEW `tpi_dabd`.`reportesesion` AS
+    SELECT 
+        `tpi_dabd`.`u`.`usuario` AS `usuario`,
+        COUNT(`tpi_dabd`.`s`.`idSesion`) AS `Cantidad`
+    FROM
+        (`tpi_dabd`.`sesiones` `s`
+        JOIN `tpi_dabd`.`usuarios` `u` ON ((`tpi_dabd`.`s`.`idUsuario` = `tpi_dabd`.`u`.`idUsuario`)))
+    GROUP BY `tpi_dabd`.`s`.`idUsuario`
